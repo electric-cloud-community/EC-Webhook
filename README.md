@@ -2,6 +2,8 @@
 
 The plugin provides a generic way for CloudBees CD to respond to webhooks.
 
+Supported CloudBees CD versions: 2020.12
+
 ## Instruction
 1. Install and promote the plugin
 2. Create a new trigger for a procedure or pipeline

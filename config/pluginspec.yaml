@@ -1,0 +1,53 @@
+pluginInfo:
+  # This is default sample specification
+  # Feel free to change it
+  # Call pdk showdoc pluginspec to see the list of available fields and their description
+  pluginName: 'EC-Webhook'
+  version: '1.0.0'
+  description: 'Process generic webhooks from thirdparty tool sources'
+  author: 'Greg Maxey'
+  supportUrl: 'https://support.cloudbees.com'
+  category: 'Utilities'
+  shell: 'ec-groovy'
+
+properties:
+  - propertyName: ec_webhook
+    credentialProtected: true
+    properties:
+      - propertyName: default
+        properties:
+          - propertyName: displayName
+            value: Webhook
+          - propertyName: procedureName
+            value: webhook
+          - propertyName: script
+            value: '$[/myProject/ec_webhook/script.groovy]'
+          - propertyName: setupProcedure
+            value: SetupWebhook
+
+procedures:
+  - name: SetupWebhook
+    description: This is hidden procedure used by the CD server to manage the connected webhook.
+    shell: ec-groovy
+    hideFromStepPicker: true
+    parameters:
+      - name: ec_trigger
+        label: Trigger Id
+        condition: ${false}
+        required: true
+        value: 'dummy_value_to_bypass_the_form_validation'
+        documentation: |
+          Id of the trigger to create the webhook for.
+  - name: webhook
+    shell: ec-groovy
+    hideFromStepPicker: true
+    #    this is a webhook backing procedure (gives form for the webhook)
+    parameters:
+      - name: ec_trigger
+        label: Trigger Id
+        condition: ${false}
+        required: true
+        value: 'dummy_value_to_bypass_the_form_validation'
+        documentation: |
+          Id of the trigger to create the webhook for.   
+    

@@ -1,0 +1,19 @@
+version: '3'
+services:
+  electric-flow:
+    image: "electricflow/efserver:latest"
+    ports:
+      - "8000:8000"
+      - "8443:8443"
+      - "443:443"
+      - "80:80"
+    networks:
+      - internal
+    container_name: electricflow
+    # This validity of the URL will be checked by the Bitbucket API when hook is created
+    # As the build machine does not have external access, I'm using well-known resolvable URL
+    hostname: 8.8.8.8.beesdns.com
+    tty: true
+networks:
+  internal:
+    driver: bridge

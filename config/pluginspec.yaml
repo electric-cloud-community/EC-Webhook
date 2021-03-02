@@ -22,32 +22,57 @@ properties:
             value: webhook
           - propertyName: script
             value: '$[/myProject/ec_webhook/script.groovy]'
-          - propertyName: setupProcedure
-            value: SetupWebhook
 
 procedures:
-  - name: SetupWebhook
-    description: This is hidden procedure used by the CD server to manage the connected webhook.
-    shell: ec-groovy
-    hideFromStepPicker: true
-    parameters:
-      - name: ec_trigger
-        label: Trigger Id
-        condition: ${false}
-        required: true
-        value: 'dummy_value_to_bypass_the_form_validation'
-        documentation: |
-          Id of the trigger to create the webhook for.
   - name: webhook
     shell: ec-groovy
     hideFromStepPicker: true
-    #    this is a webhook backing procedure (gives form for the webhook)
     parameters:
-      - name: ec_trigger
-        label: Trigger Id
-        condition: ${false}
-        required: true
-        value: 'dummy_value_to_bypass_the_form_validation'
+      - name: alwaysRun
+        label: Always Run
         documentation: |
-          Id of the trigger to create the webhook for.   
+          This allows you to simply bypass all checks and run the trigger on any incoming request.
+        type: checkbox
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: true
+
+      - name: checkClosure
+        condition: ${alwaysRun} == 'false'
+        type: textarea
+        label: Groovy Closure
+        documentation: |
+          Specify a Groovy closure that should check if trigger should be launched for incoming event.
+        required: true
+        value: |
+          {
+              // Map<String, String>, String
+              headers, webhookPayloadBody ->
+
+              // Headers check
+              // if (headers.get('X-Github-Event') != 'push'){
+              //   // This will show the reason in response
+              //   throw new RuntimeException("Only 'push' events are supported.")
+              // }
+
+              // Payload body check
+              // Assuming JSON
+              // Map webhookPayload = (new JsonSlurper()).parseText(this.body) as Map<String, Object>
+              //
+              // if (webhookPayload.get('branch') != 'master'){
+              //   // This will exit quietly
+              //    return false
+              // }
+
+              // This one allows to pass properties to the CloudBees CD Runtime
+              return [
+                  // eventType: 'push',
+                  launchWebhook: true,
+                  // branch: 'main',
+                  responseMessage: "Launching trigger for event 'push' in branch 'main'",
+                  //webhookData: [
+                  // commitSha: webhookPayload.get("commitId")
+                  //]
+              ]
+          }
     

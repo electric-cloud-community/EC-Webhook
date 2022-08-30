@@ -8,6 +8,7 @@ pluginInfo:
   author: 'Greg Maxey'
   supportUrl: 'https://support.cloudbees.com'
   category: 'Utilities'
+  repositoryUrl: 'https://github.com/electric-cloud-community/EC-Webhook'
   shell: 'ec-groovy'
 
 properties:

@@ -1,15 +1,15 @@
 pluginInfo:
-  # This is default sample specification
-  # Feel free to change it
-  # Call pdk showdoc pluginspec to see the list of available fields and their description
   pluginName: 'EC-Webhook'
   version: '1.0.0'
   description: 'Process generic webhooks from thirdparty tool sources'
   author: 'Greg Maxey'
   supportUrl: 'https://support.cloudbees.com'
   category: 'Utilities'
-  repositoryUrl: 'https://github.com/electric-cloud-community/EC-Webhook'
   shell: 'ec-groovy'
+  label: WebHooks
+  repositoryUrl: https://github.com/electric-cloud-community/EC-Webhook.git
+  detailedDescription: |
+    This plugin adds support for webhooks and handles them in a generic fashion.
 
 properties:
   - propertyName: ec_webhook

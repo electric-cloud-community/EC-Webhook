@@ -9,7 +9,7 @@ pluginInfo:
   label: WebHooks
   repositoryUrl: https://github.com/electric-cloud-community/EC-Webhook
   detailedDescription: |
-    This plugin adds support for webhooks and handles them in a generic fashion.
+    This plugin adds support for webhooks and handles them in a generic fashion by capturing the payload and making it available in the runtime.
 
 properties:
   - propertyName: ec_webhook

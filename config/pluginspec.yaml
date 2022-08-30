@@ -7,7 +7,7 @@ pluginInfo:
   category: 'Utilities'
   shell: 'ec-groovy'
   label: WebHooks
-  repositoryUrl: https://github.com/electric-cloud-community/EC-Webhook.git
+  repositoryUrl: https://github.com/electric-cloud-community/EC-Webhook
   detailedDescription: |
     This plugin adds support for webhooks and handles them in a generic fashion.
 

@@ -1,6 +1,6 @@
 pluginInfo:
   pluginName: 'EC-Webhook'
-  version: '1.0.0'
+  version: '1.0.1'
   description: 'Process generic webhooks from thirdparty tool sources'
   author: 'Greg Maxey'
   supportUrl: 'https://support.cloudbees.com'

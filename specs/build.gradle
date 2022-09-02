@@ -7,9 +7,6 @@ description = "EC-Webhook Specs"
 sourceCompatibility = 1.8
 
 repositories {
-    maven {
-        url "https://dl.bintray.com/ecpluginsdev/maven"
-    }
     flatDir {
         dirs '../agent/deps/libs'
     }
@@ -23,10 +20,8 @@ repositories {
 dependencies {
     implementation 'org.codehaus.groovy:groovy-all:2.4.5:indy'
     implementation 'org.spockframework:spock-core:1.1-groovy-2.4'
-
     implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     implementation 'com.jayway.restassured:rest-assured:2.4.0'
     implementation 'com.electriccloud:ec-specs-plugins-core:1.9.2'
-
     implementation 'com.electriccloud.plugins:flowpdf-groovy-lib:1.1.2.0'
 }
